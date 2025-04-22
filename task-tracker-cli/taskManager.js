@@ -4,7 +4,7 @@ const path = require("node:path");
 const filePath = path.join(__dirname + "/tasks.json");
 
 const date = new Date();
-const time = `${date.getHours()}hrs and ${date.getMinutes()} minutes past midnight.`;
+const time = date.toString();
 
 //Add a new task
 function add(taskDescription) {
