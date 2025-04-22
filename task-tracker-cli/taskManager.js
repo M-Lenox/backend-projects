@@ -44,6 +44,63 @@ function add(taskDescription) {
   });
 }
 
+//Update a task
+function update(taskID, taskDescription) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      let allData = JSON.parse(data);
+      allData[taskID - 1].description = taskDescription;
+      allData[taskID - 1].updatedAt = time;
+
+      fs.writeFile(filePath, JSON.stringify(allData), (err) => {
+        if (err) throw err;
+        console.log("Task successfully updated.");
+      });
+    }
+  });
+}
+
+//Delete a task
+function deleteTask(taskID) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      throw err;
+    } else {
+      let allData = JSON.parse(data);
+
+      if (taskID > allData.length) {
+        console.log("No task with such ID");
+      } else {
+        allData.splice(taskID - 1, 1);
+
+        //updating task IDs
+        for (let i = 0; i < allData.length; i++) {
+          allData[i].id = i + 1;
+        }
+
+        fs.writeFile(filePath, JSON.stringify(allData), (err) => {
+          if (err) {
+            throw err;
+          } else {
+            console.log("Deleting task . . . \nTask successfully deleted.");
+          }
+
+          if (allData.length === 0) {
+            fs.unlink(filePath, (err) => {
+              if (err) throw err;
+              console.log(
+                "All tasks deleted. \nDeleting file ... ... ... \nFile successfully deleted."
+              );
+            });
+          }
+        });
+      }
+    }
+  });
+}
+
 //List all tasks.
 function list() {
   fs.readFile(filePath, "utf8", (err, data) => {
@@ -59,6 +116,27 @@ function list() {
         console.log(`${allData[i].id}    ${allData[i].description}`);
         i += 1;
       }
+    }
+  });
+}
+
+//Making a task as done.
+function markDone(taskID) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      console.log("No file to mark your task. \n", err);
+    } else {
+      let allData = JSON.parse(data);
+
+      if (taskID > allData.length) {
+        console.log("No task with such ID");
+      }
+      allData[taskID - 1].status = "Done";
+
+      fs.writeFile(filePath, JSON.stringify(allData), (err) => {
+        if (err) throw err;
+        console.log("Task successfully marked done.");
+      });
     }
   });
 }
