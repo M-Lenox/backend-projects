@@ -131,12 +131,83 @@ function markDone(taskID) {
       if (taskID > allData.length) {
         console.log("No task with such ID");
       } else {
-        allData[taskID - 1].status = "Done";
+        allData[taskID - 1].status = "done";
 
         fs.writeFile(filePath, JSON.stringify(allData), (err) => {
           if (err) throw err;
-          console.log("Task successfully marked done.");
+          console.log("Task successfully marked 'done'.");
         });
+      }
+    }
+  });
+}
+
+//Mark a task as in progress
+function inProgress(taskID) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    if (err) {
+      console.log("No file to mark your task. \n", err);
+    } else {
+      let allData = JSON.parse(data);
+
+      if (taskID > allData.length) {
+        console.log("No task with such ID");
+      } else {
+        allData[taskID - 1].status = "in-progress";
+
+        fs.writeFile(filePath, JSON.stringify(allData), (err) => {
+          if (err) throw err;
+          console.log("Task successfully marked 'in-progress'.");
+        });
+      }
+    }
+  });
+}
+
+//Listing tasks by status
+function listByStatus(taskStatus) {
+  fs.readFile(filePath, "utf-8", (err, data) => {
+    let allData;
+
+    if (err) {
+      throw err;
+    } else {
+      //check for tasks with todo status
+      if (taskStatus === "todo") {
+        allData = JSON.parse(data);
+
+        let allTodos = allData.filter((todo) => todo.status === "todo");
+        console.log("Tasks with todo status. \nid    Task");
+
+        for (let i = 0; i < allTodos.length; i++) {
+          console.log(`${allTodos[i].id}    ${allTodos[i].description}`);
+        }
+      } else if (taskStatus === "done") {
+        //check for tasks with done status
+        allData = JSON.parse(data);
+
+        let allDone = allData.filter((done) => done.status === "done");
+        console.log("Tasks with done status. \nid    Task");
+
+        for (let i = 0; i < allDone.length; i++) {
+          console.log(`${allDone[i].id}    ${allDone[i].description}`);
+        }
+      } else if (taskStatus === "in-progress") {
+        //check for tasks with in-progress status
+        allData = JSON.parse(data);
+
+        let allInProgress = allData.filter(
+          (inProgress) => inProgress.status === "in-progress"
+        );
+        console.log("Tasks with in-progress status. \nid    Task");
+
+        for (let i = 0; i < allInProgress.length; i++) {
+          console.log(
+            `${allInProgress[i].id}    ${allInProgress[i].description}`
+          );
+        }
+      } else {
+        console.log(`No task with status: ${taskStatus}`);
       }
     }
   });
