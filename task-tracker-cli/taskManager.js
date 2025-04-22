@@ -130,13 +130,14 @@ function markDone(taskID) {
 
       if (taskID > allData.length) {
         console.log("No task with such ID");
-      }
-      allData[taskID - 1].status = "Done";
+      } else {
+        allData[taskID - 1].status = "Done";
 
-      fs.writeFile(filePath, JSON.stringify(allData), (err) => {
-        if (err) throw err;
-        console.log("Task successfully marked done.");
-      });
+        fs.writeFile(filePath, JSON.stringify(allData), (err) => {
+          if (err) throw err;
+          console.log("Task successfully marked done.");
+        });
+      }
     }
   });
 }
