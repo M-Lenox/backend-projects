@@ -21,7 +21,6 @@ function add(taskDescription) {
       fs.writeFile(filePath, JSON.stringify(taskData), (err) => {
         if (err) throw err;
         console.log("Task successfully added.");
-        callback();
       });
     } else {
       let allTasks = JSON.parse(data);

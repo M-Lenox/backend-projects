@@ -24,7 +24,7 @@ rl.on("close", () => {
 console.log("Welcome ... 👋");
 
 function main() {
-  rl.question("task-cli  ", (operations) => {
+  rl.question(">>  ", (operations) => {
     const operationArr = operations.trim().split(" ");
     const operation = operationArr[0].toLowerCase();
 
@@ -86,7 +86,8 @@ function main() {
                   in-progress           <taskID> (required)
                   `);
       }
-      main();
+      //   main();
+      setTimeout(main, 50);
     }
   });
 }
