@@ -20,6 +20,7 @@ rl.on("close", () => {
   console.log("Exiting program . . . goodbye!👋");
   process.exit(0);
 });
+
 console.log("Welcome ... 👋");
 
 function main() {
