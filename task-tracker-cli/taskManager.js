@@ -212,3 +212,13 @@ function listByStatus(taskStatus) {
     }
   });
 }
+
+module.exports = {
+  add,
+  update,
+  deleteTask,
+  list,
+  markDone,
+  inProgress,
+  listByStatus,
+};
