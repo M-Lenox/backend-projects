@@ -10,7 +10,7 @@ const {
 
 function main() {
   const args = process.argv.slice(2);
-  const operation = args[0];
+  const operation = args[0].toLowerCase();
 
   let taskDescription, taskID, taskStatus;
   switch (operation) {

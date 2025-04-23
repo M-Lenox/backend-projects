@@ -3,8 +3,7 @@ const path = require("node:path");
 
 const filePath = path.join(__dirname + "/tasks.json");
 
-const date = new Date();
-const time = date.toString();
+const time = new Date().toLocaleString();
 
 //Add a new task
 function add(taskDescription) {
@@ -22,6 +21,7 @@ function add(taskDescription) {
       fs.writeFile(filePath, JSON.stringify(taskData), (err) => {
         if (err) throw err;
         console.log("Task successfully added.");
+        callback();
       });
     } else {
       let allTasks = JSON.parse(data);
