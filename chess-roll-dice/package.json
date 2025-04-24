@@ -1,0 +1,17 @@
+{
+  "name": "chess-roll-dice",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "cli-spinners": "^3.2.0",
+    "picocolors": "^1.1.1"
+  }
+}
