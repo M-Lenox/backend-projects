@@ -25,7 +25,7 @@ function main() {
       update(taskID, taskDescription);
       break;
 
-    case "deleteTask":
+    case "deletetask":
       taskID = args[1];
       deleteTask(taskID);
       break;
