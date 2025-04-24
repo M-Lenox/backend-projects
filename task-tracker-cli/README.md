@@ -1,6 +1,7 @@
 # Task CLI
 
-A simple command-line interface (CLI) application to track and manage your daily tasks directly from the terminal. Built using Node.js with no external libraries, this tool helps you practice working with the filesystem, handling user input, and structuring a CLI-based project.
+A simple command-line interface (CLI) application to track and manage your daily tasks directly from the terminal. Built using Node.js with no external libraries.
+Project idea came from https://roadmap.sh/projects/task-tracker
 
 ## Features
 
