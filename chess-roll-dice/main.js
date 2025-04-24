@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { intro, select, isCancel, cancel } = require("@clack/prompts");
+const { intro, select, isCancel, cancel, confirm } = require("@clack/prompts");
 const { white, black, randomFirstMove } = require("./openings");
 const pc = require("picocolors");
 
@@ -55,6 +55,11 @@ async function randomizer() {
     default:
       console.log("There was an error with the app.");
   }
-  setTimeout(randomizer, 3000);
+
+  const shouldContinue = await confirm({
+    message: "Roll the chess opening dice again?",
+  });
+
+  shouldContinue ? setTimeout(randomizer, 50) : process.exit(0);
 }
 randomizer();
