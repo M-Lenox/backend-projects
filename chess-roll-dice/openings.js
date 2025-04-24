@@ -1,7 +1,7 @@
 //Openings for white
 const whiteOpenings = {
   0: "Play the Bird opening",
-  1: "Play a gambit line",
+  1: "Play a gambit line ",
   2: "Play a dubious opening and survive the trouble",
   3: "Play the closed sicilian",
   4: "Play 1.e4",

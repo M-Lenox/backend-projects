@@ -5,16 +5,16 @@ const { white, black, randomFirstMove } = require("./openings");
 const pc = require("picocolors");
 
 async function randomizer() {
-  intro(pc.inverse("\n roll-the-chess-opening-dice "));
+  intro(pc.inverse("\n  roll-the-chess-opening-dice 🎲♘  "));
 
   const colorPlay = await select({
     message: "What color are you playing?",
     options: [
-      { value: "white", label: "White." },
-      { value: "black", label: "Black." },
+      { value: "white", label: "White.♟" },
+      { value: "black", label: "Black.♙" },
       {
         value: "randomFirstMove",
-        label: "Have fun! with a random first move.",
+        label: "Have fun! with a random first move. 🎲♘",
       },
     ],
   });
@@ -57,7 +57,7 @@ async function randomizer() {
   }
 
   const shouldContinue = await confirm({
-    message: "Roll the chess opening dice again?",
+    message: "Roll the chess opening dice again? 🎲♘",
   });
 
   shouldContinue ? setTimeout(randomizer, 50) : process.exit(0);
